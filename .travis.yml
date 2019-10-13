@@ -1,0 +1,14 @@
+# tell travis we need access to sudo so we can use docker
+sudo: required
+
+# tell travis that we need the docker CLI preinstalled
+services:
+  - docker
+
+# any commands we want to have executed before our container is run (or tests are run)
+before_install:
+  - docker build -t eriddoch/flask-app -f Dockerfile .
+
+# commands to run the main task
+script:
+  - docker run --rm eriddoch/flask-app pytest app_test.py
