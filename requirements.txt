@@ -1,1 +1,2 @@
 flask-swagger==0.2.13
+pytest
